@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* INTRO */
+
+#intro-screen {
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#intro-stage {
+    position: relative;
+    width: min(96vw, 1600px);
+    aspect-ratio: 16 / 9;
+    max-height: 96vh;
+    overflow: hidden;
+}
+
+#intro-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+#start-click-area {
+    position: absolute;
+    left: 34%;
+    bottom: 12%;
+    width: 32%;
+    height: 10%;
+    cursor: pointer;
+    z-index: 30;
+    background: transparent;
+    border: none;
+}
+
+/* BAT */
+
+#bat-overlay {
+    position: absolute;
+    width: 7%;
+    right: 11%;
+    top: 10%;
+    opacity: 0;
+    pointer-events: none;
+    image-rendering: pixelated;
+    z-index: 5;
+    animation: batEscape 8s ease-in-out infinite;
+}
+
+@keyframes batEscape {
+    0%, 45% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.9);
+    }
+
+    52% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.9);
+    }
+
+    70% {
+        opacity: 1;
+        transform: translate(35px, -25px) scale(0.65);
+    }
+
+    88%, 100% {
+        opacity: 0;
+        transform: translate(120px, -80px) scale(0.3);
+    }
+}
+
+/* FOG */
+
+.fog-overlay {
+    position: absolute;
+    width: 120%;
+    opacity: 0.15;
+    pointer-events: none;
+    image-rendering: pixelated;
+    z-index: 4;
+}
+
+.fog-one {
+    top: 5%;
+    left: -50%;
+    animation: fogTopA 24s linear infinite;
+}
+
+.fog-two {
+    top: 16%;
+    left: -65%;
+    opacity: 0.12;
+    transform: scaleX(-1);
+    animation: fogTopB 31s linear infinite;
+}
+
+.fog-three {
+    top: 28%;
+    left: -60%;
+    opacity: 0.09;
+    animation: fogTopC 38s linear infinite;
+}
+
+@keyframes fogTopA {
+    from { transform: translateX(-10%); }
+    to { transform: translateX(80%); }
+}
+
+@keyframes fogTopB {
+    from { transform: translateX(0%) scaleX(-1); }
+    to { transform: translateX(85%) scaleX(-1); }
+}
+
+@keyframes fogTopC {
+    from { transform: translateX(-5%); }
+    to { transform: translateX(75%); }
+}
+
+/* LIGHTNING */
+
+.lightning-overlay {
+    position: absolute;
+    height: 58%;
+    opacity: 0;
+    pointer-events: none;
+    image-rendering: pixelated;
+    z-index: 6;
+}
+
+.lightning-one {
+    top: 0;
+    left: 10%;
+    animation: lightningOne 10s infinite;
+}
+
+.lightning-two {
+    top: 0;
+    right: 14%;
+    height: 52%;
+    transform: scaleX(-1);
+    animation: lightningTwo 13s infinite;
+}
+
+.lightning-three {
+    top: -3%;
+    left: 48%;
+    height: 48%;
+    animation: lightningThree 17s infinite;
+}
+
+@keyframes lightningOne {
+    0%, 72%, 100% { opacity: 0; }
+    73% { opacity: 0.9; }
+    74% { opacity: 0; }
+    75% { opacity: 0.55; }
+    76% { opacity: 0; }
+}
+
+@keyframes lightningTwo {
+    0%, 61%, 100% { opacity: 0; }
+    62% { opacity: 0.75; }
+    63% { opacity: 0; }
+    64% { opacity: 0.45; }
+    65% { opacity: 0; }
+}
+
+@keyframes lightningThree {
+    0%, 84%, 100% { opacity: 0; }
+    85% { opacity: 0.65; }
+    86% { opacity: 0; }
+}
+
+/* SCENE TEMPLATE */
+
+#scene-screen {
+    display: none;
+    min-height: 100vh;
+    background: #050509;
+    padding: 28px;
+}
+
+#scene-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#scene-image {
+    display: block;
+    width: 100%;
+    max-height: 58vh;
+    object-fit: contain;
+    background: black;
+    border: 4px solid #333;
+    image-rendering: pixelated;
+    margin-bottom: 24px;
+}
+
+#story-box {
+    background: #090909;
+    border: 4px solid #333;
+    padding: 24px;
+    line-height: 1.8;
+    font-size: 13px;
+    margin-bottom: 22px;
+    white-space: pre-line;
+}
+
+.choice-button {
+    width: 100%;
+    padding: 18px;
+    margin-bottom: 14px;
+    background: black;
+    border: 4px solid #3cff68;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    line-height: 1.6;
+    cursor: pointer;
+}
+
+.choice-button:hover {
+    background: #3cff68;
+    color: black;
+}
